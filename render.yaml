@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: fxflow-backend
+    rootDir: backend
+    env: node
+    buildCommand: "npm install"
+    startCommand: "npm run start"
+    plan: free
+    envVars:
+      - key: CTRADER_CLIENT_ID
+        sync: false
+      - key: CTRADER_CLIENT_SECRET
+        sync: false
+      - key: CTRADER_ACCOUNT_ID
+        sync: false
+      - key: CTRADER_REFRESH_TOKEN
+        sync: false
+
+  - type: static
+    name: fxflow-frontend
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "dist"
+    plan: free
